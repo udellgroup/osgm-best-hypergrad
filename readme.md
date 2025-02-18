@@ -1,3 +1,8 @@
+## Hypergradient Descent with Polyak Momentum
+
+This is the official implementation of [Provable and Practical Online Learning Rate Adaptation with
+Hypergradient Descent](https://arxiv.org/pdf/2502.11229).
+
 **Reproducing the results**
 
 To reproduce the experiments in the paper,
@@ -46,4 +51,7 @@ and figures will be saved in `figures` directory.
 ```
 a1a, a2a, a3a, a4a, a5a, a6a, a7a, a8a, a9a, australian_scale, fourclass_scale, german, gisette_scale, gisette_scale, heart_scale, ijcnn1, ionosphere_scale, leu, liver-disorders_scale, mushrooms, phishing, skin_nonskin, sonar_scale, splice_scale, svmguide1, svmguide3, w1a, w2a, w3a, w4a, w5a, w6a, w7a, w8a
 ```
+
+**Code maintainance and contact**
+gwz@stanford.edu
 
