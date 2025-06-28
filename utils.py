@@ -117,12 +117,13 @@ def plot_descent_curves(algorithm_curves,
     num_algos = len(algorithm_curves)
     colors = sns.color_palette("Paired", n_colors=num_algos)
     
-    # Hack into the color of BFGS
-    colors[6] = (0.0, 0.0, 0.0) # BFGS
-    colors[7] = (0.75, 0.75, 0.75) # L-BFGS-M1
-    colors[8] = (0.6, 0.6, 0.6) # L-BFGS-M3
-    colors[9] = (0.45, 0.45, 0.45) # L-BFGS-M5
-    colors[10] = (0.3, 0.3, 0.3) # L-BFGS-M10
+    if len(colors) > 10:
+        # Hack into the color of BFGS
+        colors[6] = (0.0, 0.0, 0.0) # BFGS
+        colors[7] = (0.75, 0.75, 0.75) # L-BFGS-M1
+        colors[8] = (0.6, 0.6, 0.6) # L-BFGS-M3
+        colors[9] = (0.45, 0.45, 0.45) # L-BFGS-M5
+        colors[10] = (0.3, 0.3, 0.3) # L-BFGS-M10
     
     # Cycle through markers if there are more algorithms than markers
     markers = itertools.cycle(["o", "s", "^", "D", "v", ">", "<", "p", "h", "*", "1", "2"])
@@ -159,6 +160,9 @@ def plot_descent_curves(algorithm_curves,
         plt.ylim(bottom=1e-05, top=1.5 * max([v[0] for v in algorithm_curves.values()]))
     else:
         plt.ylim(bottom=1e-10, top=1.5 * max([v[0] for v in algorithm_curves.values()]))
+        
+    if len(colors) < 10:
+        plt.legend(loc=legend_loc, fontsize=16)
         
     plt.tight_layout()
     

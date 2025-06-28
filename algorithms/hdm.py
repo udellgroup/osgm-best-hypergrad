@@ -271,7 +271,9 @@ if __name__ == "__main__":
     
     params = hdm_params
     params[ALG_HDM_LR_VERSION] = ALG_HDM_VERSION_DIAG
+    params[ALG_HDM_BETA_VERSION] = ALG_HDM_VERSION_SCALAR
     params[ALG_HDM_LEARNING_RATE] = 0.25
+    params[ALG_HDM_BETA_LEARNING_RATE] = 1.0
     params[ALG_UNIVERSAL_PARAM_L_EST] = 4.0
     
     # Initialize the optimizer

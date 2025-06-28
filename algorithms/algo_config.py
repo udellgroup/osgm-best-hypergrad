@@ -47,6 +47,17 @@ ALG_HDM_VERSION_MATRIX = "HDM MATRIX VERSION"
 ALG_HDM_VERSION_SCALAR = "HDM SCALAR VERSION"
 ALG_HDM_LOGGING = "HDM LOGGING"
 
+# OSGM advanced version
+ALG_OSGM_NONCONVEX = "OSGM NONCONVEX"
+ALG_OSGM_LR_VERSION = "OSGM LR VERSION"
+ALG_OSGM_VERSION_DIAG = "OSGM DIAGONAL VERSION"
+ALG_OSGM_VERSION_SCALAR = "OSGM SCALAR VERSION"
+
+ALG_OSGM_ONLINE_ALG = "OSGM ONLINE ALGORITHM"
+ALG_OSGM_ONLINE_ALG_ADAGRAD = "OSGM ONLINE ALGORITHM ADAGRAD"
+ALG_OSGM_ONLINE_ALG_OGD = "OSGM ONLINE ALGORITHM OGD"
+ALG_OSGM_LOGGING = "OSGM LOGGING"
+
 # Configuration of the optimization algorithms
 gradient_descent_params = {
     ALG_UNIVERSAL_PARAM_NAME: "Gradient Descent",
@@ -143,10 +154,22 @@ hdm_params = {
     ALG_HDM_NONCONVEX: False
 }
 
+osgm_params = {
+    ALG_UNIVERSAL_PARAM_NAME: "OSGM",
+    ALG_UNIVERSAL_PARAM_MAXITER: 1000,
+    ALG_UNIVERSAL_PARAM_TOL: 1e-06,
+    ALG_UNIVERSAL_PARAM_L_EST: inf,
+    ALG_UNIVERSAL_PARAM_MU_EST: 0,
+    ALG_UNIVERSAL_PARAM_OPTVAL: -inf,
+    ALG_OSGM_LR_VERSION: ALG_HDM_VERSION_DIAG,
+    ALG_OSGM_LOGGING: False,
+    ALG_OSGM_NONCONVEX: False,    
+}
+
 if __name__ == "__main__":
     
     alg_params = [gradient_descent_params, gradient_descent_heavy_ball_params, accelerated_gradient_descent_scvx_params,
-                  accelerated_gradient_descent_cvx_params, adagrad_params, adam_params, bfgs_params, lbfgs_params, hdm_params]
+                  accelerated_gradient_descent_cvx_params, adagrad_params, adam_params, bfgs_params, lbfgs_params, hdm_params, osgm_params]
     
     for alg in alg_params:
         print(alg[ALG_UNIVERSAL_PARAM_NAME])

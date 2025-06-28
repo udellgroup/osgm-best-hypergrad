@@ -1,5 +1,6 @@
 import numpy as np
 import scipy.sparse as sp
+from scipy.special import expit
 try:
     import pycutest
 except:
@@ -75,8 +76,9 @@ def get_logistic_problem(X: np.ndarray, y: np.ndarray, reg: float = 0.0) -> Tupl
 # Define the logistic loss
 def logistic_loss(w: np.ndarray, X: np.ndarray, y: np.ndarray) -> float:
     
-    logits = - y * (X.dot(w))
-    return np.sum(np.log(1 + np.exp(logits)))
+    logits = -y * (X @ w)
+    # logaddexp(0, t) = log(1 + exp(t)) computed in log-space:
+    return np.logaddexp(0.0, logits).sum()
 
 # Gradient of logistic regression
 def logistic_loss_grad(w: np.ndarray, X: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -84,7 +86,7 @@ def logistic_loss_grad(w: np.ndarray, X: np.ndarray, y: np.ndarray) -> np.ndarra
     logits = - y * (X.dot(w))
     # sigma = 1 / (1 + exp(logits))
     # derivative wrt w is: 1/N * X^T [ -y * sigma ]
-    sigma = 1.0 - 1.0 / (1.0 + np.exp(logits))
+    sigma  = expit(logits)
     grad = X.T.dot(-y * sigma)
     return grad
 
