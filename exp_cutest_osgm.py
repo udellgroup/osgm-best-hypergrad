@@ -31,12 +31,16 @@ import argparse
 parser = argparse.ArgumentParser(description='Benchmark algorithms on different problems and datasets')
 parser.add_argument('--dataid', type=int, default=5, help='Index of the dataset')
 parser.add_argument('--plot_curves', type=int, default=1, help='Whether to plot figures')
+parser.add_argument('--max_iter', type=int, default=1000, help='Maximum number of gradient evaluations')
+parser.add_argument('--tol', type=float, default=1e-04, help='Tolerance of gradient norm')
 
 if __name__ == "__main__":
 
     args = parser.parse_args()
     dataid = args.dataid
     plot_curves = args.plot_curves
+    max_iter = args.max_iter
+    tol = args.tol
     
     np.random.seed(20250701)
     
@@ -121,7 +125,7 @@ if __name__ == "__main__":
     # Set algorithm parameters and initialize
     for algo in alg_list.keys():
         alg_list[algo][1][ALG_UNIVERSAL_PARAM_L_EST] = L_est
-        alg_list[algo][1][ALG_UNIVERSAL_PARAM_TOL] = 1e-04
+        alg_list[algo][1][ALG_UNIVERSAL_PARAM_TOL] = tol
         alg_list[algo][1][ALG_UNIVERSAL_PARAM_MU_EST] = mu_est
         alg_list[algo][1][ALG_UNIVERSAL_PARAM_MAXITER] = 1000
         algo_class = alg_list[algo][0] # type: Optimizer
