@@ -168,7 +168,8 @@ class OSGMOptimizer(Optimizer):
             g_diff = self._grad_eval(x + delta) - g
             L_est = max(L_est, np.linalg.norm(g_diff) / 1e-04)
             
-        L_est = L_est
+        if np.isinf(L_est) or np.isnan(L_est):
+            L_est = 1e-05
         
         # Stepsize learning
         if version == ALG_OSGM_VERSION_DIAG:
