@@ -159,7 +159,7 @@ def plot_descent_curves(algorithm_curves,
     if ylabel == "Gradient Norm":
         plt.ylim(bottom=1e-05, top=1.5 * max([v[0] for v in algorithm_curves.values()]))
     else:
-        plt.ylim(bottom=1e-10, top=1.5 * max([v[0] for v in algorithm_curves.values()]))
+        plt.ylim(bottom=1e-12, top=1.5 * max([v[0] for v in algorithm_curves.values()]))
         
     if len(colors) < 10:
         plt.legend(loc=legend_loc, fontsize=16)

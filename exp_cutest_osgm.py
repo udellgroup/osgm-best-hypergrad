@@ -29,7 +29,7 @@ from utils import plot_descent_curves
 
 import argparse
 parser = argparse.ArgumentParser(description='Benchmark algorithms on different problems and datasets')
-parser.add_argument('--dataid', type=int, default=5, help='Index of the dataset')
+parser.add_argument('--dataid', type=int, default=1, help='Index of the dataset')
 parser.add_argument('--plot_curves', type=int, default=1, help='Whether to plot figures')
 parser.add_argument('--max_iter', type=int, default=1000, help='Maximum number of gradient evaluations')
 parser.add_argument('--tol', type=float, default=1e-04, help='Tolerance of gradient norm')
@@ -166,19 +166,25 @@ if __name__ == "__main__":
     if plot_curves:
         # Function value gap
         alg_descent_curves = {algo: alg_list[algo][4][ALG_STATS_FUNCVALS] - opt_val for algo in alg_list.keys()}
-        plot_descent_curves(alg_descent_curves, 
-                            use_log_scale=True, 
-                            legend_loc="upper right",
-                            ylabel="Function value gap",
-                            title=f"{data_name}",
-                            fname=f"{data_name}_objval_cutest.pdf")
+        try:
+            plot_descent_curves(alg_descent_curves, 
+                                use_log_scale=True, 
+                                legend_loc="upper right",
+                                ylabel="Function value gap",
+                                title=f"{data_name}",
+                                fname=f"{data_name}_objval_cutest.pdf")
+        except:
+            pass
         
         # Gradient norm
         alg_descent_curves = {algo: alg_list[algo][4][ALG_STATS_GNORMS] for algo in alg_list.keys()}
-        plot_descent_curves(alg_descent_curves, 
-                            use_log_scale=True, 
-                            legend_loc="upper right",
-                            ylabel="Gradient Norm",
-                            title=f"{data_name}",
-                            fname=f"{data_name}_gnorm_cutest.pdf")
+        try:
+            plot_descent_curves(alg_descent_curves, 
+                                use_log_scale=True, 
+                                legend_loc="upper right",
+                                ylabel="Gradient Norm",
+                                title=f"{data_name}",
+                                fname=f"{data_name}_gnorm_cutest.pdf")
+        except:
+            pass
         

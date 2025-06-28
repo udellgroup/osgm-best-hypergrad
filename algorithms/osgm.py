@@ -305,6 +305,13 @@ class OSGMOptimizer(Optimizer):
                 
             if self.n_grad_eval > max_iter - 1:
                 break
+            
+            if fval < -1e+20 or fval == -np.inf:
+                fval = -1e+20
+                fvals[n_iter - 1] = fval
+                gnorms[n_iter - 1] = 0
+                # Problem is unbounded
+                break
 
         # If we ended early, fill trailing stats
         if n_iter < max_iter:
