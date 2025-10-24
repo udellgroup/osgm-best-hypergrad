@@ -1,7 +1,7 @@
-## Hypergradient Descent with Polyak Momentum
+## OSGM-Best Hypergradient Descent with Polyak Momentum
 
 This is the official implementation of [Provable and Practical Online Learning Rate Adaptation with
-Hypergradient Descent](https://arxiv.org/pdf/2502.11229).
+Hypergradient Descent](https://arxiv.org/pdf/2502.11229) and [Gradient Methods with Online Scaling Part I](https://arxiv.org/abs/2505.23081) and [Part II](https://arxiv.org/pdf/2509.11007)
 
 **Reproducing the results**
 
@@ -27,21 +27,21 @@ To reproduce the experiments in the paper,
 
    ```
    Running a1a
-   ================================================
-                 Solver [S]   nFvalCall   nGradCall
-                     GD [0]           0        1000
-                  GD-HB [0]           0        1000
-                AGD-CVX [0]           0        1000
-               AGD-SCVX [0]           0        1000
-                   Adam [1]           0         566
-                AdaGrad [0]           0        1000
-                   BFGS [1]          91          91
-              L-BFGS-M1 [0]        1124        1124
-              L-BFGS-M3 [1]         522         522
-              L-BFGS-M5 [1]         531         531
-             L-BFGS-M10 [1]         328         328
-               HDM-Best [1]         275         276
-   ================================================
+   ===================================================
+                   Solver [S]   nFvalCall   nGradCall
+                       GD [0]           0        1000
+                    GD-HB [0]           0        1000
+                  AGD-CVX [0]           0        1000
+                 AGD-SCVX [0]           0        1000
+                     Adam [1]           0         566
+                  AdaGrad [0]           0        1000
+                     BFGS [1]          91          91
+                L-BFGS-M1 [0]        1124        1124
+                L-BFGS-M3 [1]         522         522
+                L-BFGS-M5 [1]         531         531
+               L-BFGS-M10 [1]         328         328
+    HDM-Best or OSGM-Best [1]         275         276
+   ===================================================
    ```
 
 and figures will be saved in `figures` directory.
