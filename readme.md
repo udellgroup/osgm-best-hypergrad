@@ -1,4 +1,5 @@
-## OSGM-Best Hypergradient Descent with Polyak Momentum
+## OSGM-Best
+### Hypergradient Descent with Polyak Momentum
 
 This is the official implementation of [Provable and Practical Online Learning Rate Adaptation with
 Hypergradient Descent](https://arxiv.org/pdf/2502.11229) and [Gradient Methods with Online Scaling Part I](https://arxiv.org/abs/2505.23081) and [Part II](https://arxiv.org/pdf/2509.11007)
